@@ -1,2 +1,2 @@
 # actions-close-pr
-CIが立てたPRを閉じるactionです。
+CIが立てたPRを閉じるGitHub Actionsです。

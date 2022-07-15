@@ -34,8 +34,16 @@ runs:
             const jobs = yml_file.jobs
             for (const job_name of Object.keys(jobs)) {
               for (const step of jobs[job_name].steps) {
-                if (step.uses?.startsWith('dev-hato/actions-diff-pr-management')) {
-                  const head_name = step.with['branch-name-prefix'] + '-' + HEAD_REF
+                if (step.uses && (step.uses.startsWith('dev-hato/actions-diff-pr-management') || step.uses.startsWith('dev-hato/actions-update-gitleaks'))) {
+                  let head_name
+
+                  if (step.uses.startsWith('dev-hato/actions-update-gitleaks')) {
+                    head_name = 'fix-version-gitleaks-'
+                  } else {
+                    head_name = step.with['branch-name-prefix'] + '-'
+                  }
+
+                  head_name += HEAD_REF
                   let head = "${{github.event.pull_request.head.repo.owner.login}}:"
                   head += head_name
                   const pulls_list_params = {

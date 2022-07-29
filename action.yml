@@ -35,12 +35,15 @@ runs:
             for (const job_name of Object.keys(jobs)) {
               for (const step of jobs[job_name].steps) {
                 if (step.uses && (step.uses.startsWith('dev-hato/actions-diff-pr-management') || step.uses.startsWith('dev-hato/actions-update-gitleaks'))) {
+                  const branch_name_prefix = step.with['branch-name-prefix']
                   let head_name
 
                   if (step.uses.startsWith('dev-hato/actions-update-gitleaks')) {
                     head_name = 'fix-version-gitleaks'
+                  } else if (branch_name_prefix === undefined) {
+                    head_name = 'fix'
                   } else {
-                    head_name = step.with['branch-name-prefix']
+                    head_name = branch_name_prefix
                   }
 
                   head_name += '-' + HEAD_REF

@@ -5,9 +5,6 @@ inputs:
   github-token: # id of input
     description: 'GITHUB_TOKEN'
     required: true
-  repo-name:
-    description: 'Repository name'
-    required: true
 runs:
   using: "composite"
   steps:
@@ -15,7 +12,7 @@ runs:
       uses: actions/github-script@v6.1.0
       env:
         HEAD_REF: ${{github.event.pull_request.head.ref}}
-      if: inputs.repo-name == github.repository
+      if: github.event.pull_request.head.repo.full_name == github.repository
       with:
         github-token: ${{inputs.github-token}}
         script: |

@@ -1,10 +1,10 @@
 # actions-close-pr
 
-※本Actionsは https://github.com/dev-hato/actions-diff-pr-management と併用することを前提としています。
+※本Actionsは <https://github.com/dev-hato/actions-diff-pr-management> と併用することを前提としています。
 
-https://github.com/dev-hato/actions-diff-pr-management はPRのブランチに対して、フォーマッタを実行した結果をPRにするGitHub Actionsです。
+<https://github.com/dev-hato/actions-diff-pr-management> はPRのブランチに対して、フォーマッタを実行した結果をPRにするGitHub Actionsです。
 
-元のPRを閉じた場合、 https://github.com/dev-hato/actions-diff-pr-management が立てたPRは残ります。  
+元のPRを閉じた場合、 <https://github.com/dev-hato/actions-diff-pr-management> が立てたPRは残ります。  
 
 このような場合、本Actionsを併用することで自動的にPRを閉じることができます。
 
